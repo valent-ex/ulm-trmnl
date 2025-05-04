@@ -1,10 +1,11 @@
-version: '3.8'
+version: "3.8"
 
 services:
   ulm-trmnl:
-    build: .
+    build:
+      context: .
     environment:
-      - BEZIRK=10
+      - TRASH_BEZIRK=YOUR_DISTRICT
       - TRASH_WEBHOOK=https://example.com/webhook
       - TRASH_INTERVAL=86400
     restart: unless-stopped
