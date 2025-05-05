@@ -5,7 +5,7 @@ services:
     build:
       context: .
     environment:
-      - TRASH_BEZIRK=YOUR_DISTRICT
-      - TRASH_WEBHOOK=https://example.com/webhook
-      - TRASH_INTERVAL=86400
+      - TRASH_BEZIRK
+      - TRASH_WEBHOOK
+      - TRASH_INTERVAL
     restart: unless-stopped
