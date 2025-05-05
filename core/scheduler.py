@@ -1,6 +1,7 @@
 import time
 import importlib
 import schedule
+import sys
 from core.sender import send_payload
 from core.config import TASKS
 
@@ -15,9 +16,12 @@ def schedule_task(task):
         payload = func()
         send_payload(task["webhook"], payload)
 
+    # Явный вывод в stdout
+    sys.stdout.write(f"📌 Scheduled {task['name']} every {task['interval']} seconds\n")
+    sys.stdout.flush()
+
     job()
     schedule.every(task["interval"]).seconds.do(job)
-    print(f"📌 Scheduled {task['name']} every {task['interval']} seconds")
 
 def run_scheduler():
     while True:
@@ -27,5 +31,6 @@ def run_scheduler():
 def start_scheduler():
     for task in TASKS:
         schedule_task(task)
-    print("🚀 Scheduler started")
+    sys.stdout.write("🚀 Scheduler started\n")
+    sys.stdout.flush()
     run_scheduler()
