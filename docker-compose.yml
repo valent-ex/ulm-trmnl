@@ -5,6 +5,7 @@ services:
     build:
       context: .
     environment:
+      - PYTHONUNBUFFERED=1
       - TRASH_BEZIRK
       - TRASH_WEBHOOK
       - TRASH_INTERVAL
